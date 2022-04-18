@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './Footer.css'
 
 const Footer = () => {
     const [date, setDate] = useState();
@@ -12,8 +13,8 @@ const Footer = () => {
     }, [])
 
     return (
-        <div>
-            <span>
+        <div className='footer'>
+            <span className='title'>
                 Copyright © TeleDoc {date}
             </span>
         </div>

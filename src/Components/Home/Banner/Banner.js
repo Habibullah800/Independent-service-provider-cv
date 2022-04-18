@@ -12,42 +12,43 @@ const Banner = () => {
         setIndex(selectedIndex);
     };
     return (
-        <div>
+        <div className='banner'>
             <Carousel activeIndex={index} onSelect={handleSelect}>
-                <Carousel.Item className='banner'>
-                    <img style={{ height: "28em" }}
+                <Carousel.Item >
+                    <img
                         className="d-block w-100"
                         src={pic1}
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        <h4>Practice Patient Education</h4>
+                        <p><small>I can help educate your patients on uninsured medical services</small></p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img style={{ height: "28em" }}
+                    <img
                         className="d-block w-100"
                         src={pic2}
                         alt="Second slide"
                     />
 
                     <Carousel.Caption>
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        <h4>Communication and Billing</h4>
+                        <p>I take care of communicating with your patients and manage medical services.</p>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img style={{ height: "28em" }}
+                    <img
                         className="d-block w-100"
                         src={pic3}
                         alt="Third slide"
                     />
 
                     <Carousel.Caption>
-                        <h3>Third slide label</h3>
+                        <h4>Full-Service
+                            Administration</h4>
                         <p>
-                            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                            My platform is customizable to meet the specific needs of your practice.
                         </p>
                     </Carousel.Caption>
                 </Carousel.Item>

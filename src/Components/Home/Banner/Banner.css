@@ -1,3 +1,15 @@
 .banner img {
-    height: 50%;
+    height: 420px;
+}
+
+@media only screen and (max-Width: 576px) {
+    .banner img {
+        height: 230px;
+    }
+}
+
+@media only screen and (min-width:577px) and (max-Width: 992px) {
+    .banner img {
+        height: 380px;
+    }
 }
