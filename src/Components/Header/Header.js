@@ -7,6 +7,7 @@ import './Header.css'
 
 const Header = () => {
     const { user, handleSignOut } = useFirebase()
+    const photo = user?.photoURL
     return (
         <div>
             <Navbar fixed="top" collapseOnSelect expand="lg" bg="primary" variant="dark">
@@ -23,6 +24,7 @@ const Header = () => {
                         </Nav>
                         <Nav>
                             <span className='userName'> {user?.displayName && user.displayName}</span>
+                            <span> <img className='photo' src={photo} alt=''></img></span>
 
                             {
                                 user?.uid
