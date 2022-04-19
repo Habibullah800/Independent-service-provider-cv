@@ -1,4 +1,5 @@
 import React from 'react';
+import './Register.css'
 import { Link, useNavigate } from 'react-router-dom';
 
 const Register = () => {
@@ -14,9 +15,8 @@ const Register = () => {
         const password = event.target.password.value
     }
     return (
-        <div>
-            <h2>This is register</h2>
-            <h2>This is register</h2>
+        <div className='register-container'>
+
             <h3>Please Register</h3>
 
             <form onSubmit={register}>

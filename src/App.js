@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Components/About/About';
+import PlaceOrder from './Components/Home/PlaceOrder/PlaceOrder';
 import Footer from './Components/Footer/Footer';
 import Header from './Components/Header/Header';
 import NotFound from './Components/Home/404/NotFound';
@@ -20,6 +21,7 @@ function App() {
         <Route path='about' element={<About></About>}></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
+        <Route path='placeOrder' element={<PlaceOrder></PlaceOrder>}></Route>
         <Route path='/*' element={<NotFound></NotFound>}></Route>
       </Routes >
       <Footer></Footer>

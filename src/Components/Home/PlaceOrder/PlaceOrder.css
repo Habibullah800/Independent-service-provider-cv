@@ -1,0 +1,10 @@
+.congrats-container {
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.text {
+    border: 1px solid lightgreen;
+    width: 340px;
+    margin: auto;
+}

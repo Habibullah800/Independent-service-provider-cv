@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import useFirebase from '../../Hooks/UseFirebase';
-
+import './Login.css'
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -24,14 +24,10 @@ const Login = () => {
         navigate('/register')
     }
     return (
-        <div>
-            <h4>This is login page</h4>
-            <h4>This is login page</h4>
-
-
+        <div className='login-container'>
             <h3>Please Login</h3>
             <div>
-                <button onClick={signInWithGoogle}>Google Signin</button>
+                <button className='btn btn-primary' onClick={signInWithGoogle}> Sign-in with Google</button>
                 <br></br>
                 <br></br>
             </div>

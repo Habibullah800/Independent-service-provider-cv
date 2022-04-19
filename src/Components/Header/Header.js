@@ -23,15 +23,16 @@ const Header = () => {
 
                         </Nav>
                         <Nav>
-                            <span className='userName'> {user?.displayName && user.displayName}</span>
-                            <span> <img className='photo' src={photo} alt=''></img></span>
+                            <span className='userName me-2'> {user?.displayName && user.displayName}</span>
+
+                            <span> <img className='photo me-2' src={photo} alt=''></img></span>
 
                             {
                                 user?.uid
                                     ?
-                                    <div class="dropdown">
-                                        <button onClick={handleSignOut}>Sign Out
-                                            <i class="fa fa-caret-down"></i>
+                                    <div className='dropdown'>
+                                        <button className='btn btn-success' onClick={handleSignOut}>Sign Out
+                                            <i className='fa fa-caret-down'></i>
                                         </button>
                                     </div>
                                     :
