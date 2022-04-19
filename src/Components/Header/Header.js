@@ -37,9 +37,7 @@ const Header = () => {
                                     :
                                     <Link className='navText' to='/login'> Login</Link>
                             }
-                            <Link
-                                className='navText'
-                                to='/register'> Register</Link>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
