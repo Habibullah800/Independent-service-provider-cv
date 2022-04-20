@@ -11,13 +11,17 @@ const Login = () => {
     const passwordRef = useRef('');
     const navigate = useNavigate();
 
-    const { user, handleSignOut } = useFirebase()
+    const { user } = useFirebase()
 
     const [email, setEmail] = useState()
+
+    const [error, setError] = useState([]);
+    const [varification, setVerification] = useState('')
 
     const handleSubmit = event => {
         event.preventDefault();
         const email = emailRef.current.value;
+        setEmail(emailRef.current.value);
         const password = passwordRef.current.value;
 
 
@@ -27,7 +31,10 @@ const Login = () => {
                 console.log(user)
             })
             .catch(error => {
-                console.error(error)
+                const errorMessage = error.message;
+                setError(errorMessage);
+
+
             })
         // Email and password
 
@@ -38,13 +45,12 @@ const Login = () => {
     const handlePasswordReset = () => {
         sendPasswordResetEmail(auth, email)
             .then(() => {
-                console.log("Password reset email sent!");
+                setVerification("Cheak your email !");
 
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
+                setError(errorMessage)
             });
 
     }
@@ -56,25 +62,27 @@ const Login = () => {
     const navigateRegister = event => {
         navigate('/register')
     }
+
     return (
         <div className='login-container'>
-            <h3>Please Login</h3>
+            <h3>{user?.uid ? 'Congrats' : "Please Login"}</h3>
 
 
             {
                 user?.uid
                     ?
                     <div className='mb-4' >
-                        <Link className='btn btn-primary' to='/placeOrder'> Take our Treatment</Link>
+                        <Link className='btn btn-warning' to='/placeOrder'> Take our Treatment</Link>
                     </div>
                     :
                     <div>
-                        <button className='btn btn-primary' onClick={signInWithGoogle}> Sign-in with Google</button>
+                        <button className='btn btn-primary' onClick={signInWithGoogle}> Log-in with Google</button>
                         <br></br>
                         <br></br>
                     </div>
             }
 
+            <h4>Or</h4>
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
                     <input ref={emailRef} type='text' placeholder='Your Email' required></input>
@@ -89,16 +97,18 @@ const Login = () => {
                 </Form.Group>
                 <br></br>
 
-
-
                 <input type='submit' value='Login' ></input>
                 <br></br>
+                <p className='text-danger'><small> {error}</small>
+                </p>
+                <br></br>
                 <Button onClick={handlePasswordReset} variant="link">Forget Password ?</Button>
-
+                <br></br>
+                <p>{varification}</p>
             </Form>
 
             <p className='mt-4'> New to our Telemedicine Service ? <br></br>
-                <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Please Register</Link>
+                <Link to='/register' className='text-danger pe-auto text-decoration-none' onClick={navigateRegister}>Click here to Register</Link>
             </p>
         </div>
     );

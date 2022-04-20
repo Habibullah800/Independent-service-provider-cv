@@ -7,5 +7,6 @@
 }
 
 .login-container input {
-    width: 200px;
+    width: 250px;
+    padding-left: 5px;
 }
