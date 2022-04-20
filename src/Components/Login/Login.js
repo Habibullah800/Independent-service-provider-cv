@@ -1,6 +1,6 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import React, { useRef } from 'react';
-import { Form } from 'react-bootstrap';
+import { getAuth, sendPasswordResetEmail, signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useRef, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import app from '../../firebase.init';
 import useFirebase from '../../Hooks/UseFirebase';
@@ -12,6 +12,8 @@ const Login = () => {
     const navigate = useNavigate();
 
     const { user, handleSignOut } = useFirebase()
+
+    const [email, setEmail] = useState()
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -28,11 +30,24 @@ const Login = () => {
                 console.error(error)
             })
         // Email and password
-        console.log(email, password);
 
     }
 
 
+
+    const handlePasswordReset = () => {
+        sendPasswordResetEmail(auth, email)
+            .then(() => {
+                console.log("Password reset email sent!");
+
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+            });
+
+    }
 
     const { signInWithGoogle } = useFirebase();
 
@@ -77,6 +92,8 @@ const Login = () => {
 
 
                 <input type='submit' value='Login' ></input>
+                <br></br>
+                <Button onClick={handlePasswordReset} variant="link">Forget Password ?</Button>
 
             </Form>
 

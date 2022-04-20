@@ -3,7 +3,7 @@ import './Register.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import RequireAuth from '../RequireAuth/RequireAuth';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification } from 'firebase/auth';
 import app from '../../firebase.init';
 
 const auth = getAuth(app);
@@ -36,7 +36,7 @@ const Register = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 const user = result.user;
-
+                verifyEmail();
 
             })
             .catch((error) => {
@@ -47,6 +47,16 @@ const Register = () => {
             )
     }
 
+    const verifyEmail = () => {
+
+        sendEmailVerification(auth.currentUser)
+            .then(() => {
+                console.log("Email verification sent!");
+
+            });
+
+
+    }
     return (
         <div className='register-container'>
 
